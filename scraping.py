@@ -1,7 +1,6 @@
 import tabula
 import pandas as pd
 
-
 tables = tabula.read_pdf("timetable.pdf", pages= '7-66')
 df = pd.concat(tables)
 
@@ -24,7 +23,6 @@ df = df.rename(columns={'ROOM': 'SECTION',
 df = df.dropna(subset=['DAYS']) # Removing redundant rows
 df = df.reset_index(drop= True) # Resetting indexing
 df = df.ffill() # Filling details into empty cells
-
 
 # Getting set of all rooms
 rooms = df['ROOM'].unique()
